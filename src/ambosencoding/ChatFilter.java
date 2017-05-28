@@ -1,5 +1,6 @@
 package ambosencoding;
 
+import com.google.common.base.Joiner;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -30,7 +31,7 @@ public class ChatFilter extends JavaPlugin implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         if (ipPattern.matcher(e.getMessage()).matches() || domainPattern.matcher(e.getMessage()).matches()) {
-            e.getPlayer().kickPlayer("Du darfst keine Links / IP's posten");
+            e.getPlayer().sendMessage("Du darfst keine IP's / Links posten!");
             e.setCancelled(true);
         }
 
@@ -43,6 +44,8 @@ public class ChatFilter extends JavaPlugin implements Listener {
                 words[i] = new String(chars);
             }
         }
+
+        e.setMessage(Joiner.on(" ").join(words));
     }
 
 }
