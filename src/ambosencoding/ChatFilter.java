@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class ChatFilter extends JavaPlugin implements Listener {
 
-    private final Pattern ipPattern = Pattern.compile("\\d{1,3}(\\.\\d{1,3}){3}");
+    private final Pattern ipPattern = Pattern.compile("\\d{1,3}(\\.\\d{1,3}){3}(:\\d{1,5})?");
     private final Pattern domainPattern = Pattern.compile("(https?://)?([a-zA-Z\\-]+\\.)*[a-zA-Z\\-]+\\.([a-zA-Z]+)");
     private List<String> blacklistedWords = Collections.emptyList();
 
